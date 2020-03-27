@@ -317,6 +317,16 @@ export default class WebAudio extends util.Observer {
     }
 
     /**
+     * Override the destination, using a custom audio node instead of the AudioContext's destination.
+     *
+     * @param {AudioNode} the node to connect it to
+     */
+    setDestination(targetNode) {
+        this.gainNode.disconnect();
+        this.gainNode.connect(targetNode);
+    }
+
+    /**
      * Set the audio volume
      *
      * @param {number} value A floating point value between 0 and 1.
